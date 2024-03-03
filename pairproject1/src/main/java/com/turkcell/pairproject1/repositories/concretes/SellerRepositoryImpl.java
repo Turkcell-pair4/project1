@@ -1,6 +1,6 @@
-package com.example.odev.repositories.concretes;
-import com.example.odev.repositories.abstracts.SellerRepository;
-import com.example.odev.entities.Seller;
+package com.turkcell.pairproject1.repositories.concretes;
+import com.turkcell.pairproject1.repositories.abstracts.SellerRepository;
+import com.turkcell.pairproject1.entities.Seller;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
