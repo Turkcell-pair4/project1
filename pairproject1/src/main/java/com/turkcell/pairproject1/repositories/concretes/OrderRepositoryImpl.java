@@ -1,7 +1,6 @@
-package com.example.odev.repositories.concretes;
-
-import com.example.odev.repositories.abstracts.OrderRepository;
-import com.example.odev.entities.Order;
+package com.turkcell.pairproject1.repositories.concretes;
+import com.turkcell.pairproject1.repositories.abstracts.OrderRepository;
+import com.turkcell.pairproject1.entities.Order;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
