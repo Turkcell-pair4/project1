@@ -1,6 +1,6 @@
-package com.example.odev.controllers;
-import com.example.odev.entities.Order;
-import com.example.odev.services.concretes.OrderServiceImpl;
+package com.turkcell.pairproject1.controllers;
+import com.turkcell.pairproject1.entities.Order;
+import com.turkcell.pairproject1.services.concretes.OrderServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
