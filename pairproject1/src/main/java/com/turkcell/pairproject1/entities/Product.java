@@ -9,6 +9,7 @@ public class Product {
     private String photoUrl;
     private Category category;
 
+    
     public int getId() {
         return id;
     }
