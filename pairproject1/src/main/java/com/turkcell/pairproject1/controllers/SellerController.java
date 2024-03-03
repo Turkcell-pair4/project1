@@ -1,10 +1,9 @@
-package com.example.odev.controllers;
+package com.turkcell.pairproject1.controllers;
 
-import com.example.odev.entities.Seller;
-import com.example.odev.services.concretes.SellerServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
+import com.turkcell.pairproject1.entities.Seller;
+import com.turkcell.pairproject1.services.concretes.SellerServiceImpl;
 import java.util.List;
 
 @RestController
