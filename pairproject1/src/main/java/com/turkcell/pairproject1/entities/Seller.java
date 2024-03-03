@@ -1,4 +1,4 @@
-package com.example.odev.entities;
+package com.turkcell.pairproject1.entities;
 
 
 public class Seller {
