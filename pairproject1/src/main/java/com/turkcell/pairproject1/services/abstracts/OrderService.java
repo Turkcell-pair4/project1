@@ -1,6 +1,6 @@
-package com.example.odev.services.abstracts;
+package com.turkcell.pairproject1.services.abstracts;
 
-import com.example.odev.entities.Order;
+import com.turkcell.pairproject1.entities.Order;
 
 import java.util.List;
 public interface OrderService {
