@@ -1,6 +1,6 @@
-package com.example.odev.repositories.abstracts;
+package com.turkcell.pairproject1.repositories.abstracts;
 
-import com.example.odev.entities.Seller;
+import com.turkcell.pairproject1.entities.Seller;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
