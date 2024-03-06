@@ -4,7 +4,6 @@ package com.turkcell.pairproject1.entities;
 public class Seller {
 
     private Long id;
-
     private String phoneNumber;
     private String name;
     private String email;
