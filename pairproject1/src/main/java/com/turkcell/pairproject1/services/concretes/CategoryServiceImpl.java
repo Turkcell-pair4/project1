@@ -1,9 +1,7 @@
 package com.turkcell.pairproject1.services.concretes;
 
 import com.turkcell.pairproject1.entities.Category;
-import com.turkcell.pairproject1.repositories.abstracts.CategoryRepository;
-import com.turkcell.pairproject1.requests.CategorySaveRequest;
-import com.turkcell.pairproject1.requests.CategoryUpdateRequest;
+import com.turkcell.pairproject1.repositories.CategoryRepository;
 import com.turkcell.pairproject1.services.abstracts.CategoryService;
 import org.springframework.stereotype.Service;
 

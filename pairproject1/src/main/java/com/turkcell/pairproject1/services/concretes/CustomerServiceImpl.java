@@ -1,38 +1,69 @@
-package com.example.odev.services.concretes;
-import org.springframework.beans.factory.annotation.Autowired;
+package com.turkcell.pairproject1.services.concretes;
 import org.springframework.stereotype.Service;
-import com.example.odev.entities.Customer;
-import com.example.odev.repositories.CustomerRepository;
-import com.example.odev.services.CustomerService;
+import com.turkcell.pairproject1.entities.Customer;
+import com.turkcell.pairproject1.repositories.CustomerRepository;
+import com.turkcell.pairproject1.services.abstracts.CustomerService;
+
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class CustomerServiceImpl implements CustomerService{
-    @Autowired
-    private CustomerService customerService;
 
-    @Override
-    public CustomerService createCustomer(CustomerService customer) {
-        return customerService.save(customer);
+    private final CustomerRepository customerRepository;
+
+
+    public CustomerServiceImpl(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
+    }
+
+
+
+    public Customer save(Customer customer) {
+        return customerRepository.save(customer);
+    }
+
+    public Customer findById(int id) {
+        Optional<Customer> customerOptional = customerRepository.findById(id);
+        if(customerOptional.isEmpty()) {
+            throw new RuntimeException("Customer with id " + id + " does not exist");
+        }
+
+        return customerOptional.get();
+    }
+
+    public List<Customer> findAll() {
+        List<Customer> customers = customerRepository.findAll();
+
+        if(customers.isEmpty()) {
+            throw new RuntimeException("There are no customers");
+        }
+
+        return customers;
+    }
+
+    public Customer update(int id, Customer customer) {
+        Optional<Customer> customerOptional = customerRepository.findById(id);
+
+        if(customerOptional.isEmpty()) {
+            throw new RuntimeException("Customer with id " + id + " does not exist");
+        }
+
+        Customer customerToUpdate = customerOptional.get();
+        customerToUpdate = customerRepository.save(customer);
+
+        return customerToUpdate;
+
     }
 
     @Override
-    public CustomerService getCustomerById(int id) {
-        return customerService.getCustomer(id);
-    }
+    public void delete(int id) {
+        Optional<Customer> customerOptional = customerRepository.findById(id);
+        if(customerOptional.isEmpty()) {
+            throw new RuntimeException("Customer with id " + id + " does not exist");
+        }
 
-    @Override
-    public List<CustomerService> getAllCustomers() {
-        return customerService.getCustomers();
-    }
-
-    @Override
-    public CustomerService updateCustomer(CustomerService customer) {
-        return customerService.save(customer);
-    }
-
-    @Override
-    public CustomerService deleteCustomer(int id) {
-        return customerService.deleteCustomer(id);
+        customerRepository.delete(customerOptional.get());
     }
 
 

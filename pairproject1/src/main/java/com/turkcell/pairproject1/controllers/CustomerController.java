@@ -1,39 +1,42 @@
-package com.example.odev.controllers;
-import org.springframework.beans.factory.annotation.Autowired;
+package com.turkcell.pairproject1.controllers;
 import org.springframework.web.bind.annotation.*;
-
+import com.turkcell.pairproject1.entities.Customer;
+import com.turkcell.pairproject1.services.abstracts.CustomerService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/orders")
-public class OrderController {
+@RequestMapping("/customers")
+public class CustomerController {
+    private final CustomerService CustomerService;
 
-    @Autowired
-    private CustomerService CustomerService;
+    CustomerController(CustomerService CustomerService) {
+        this.CustomerService = CustomerService;
+    }
+
 
     @PostMapping("/create")
     public Customer createCustomer(@RequestBody Customer customer) {
-        return customerService.createCustomer(customer);
+        return (Customer) CustomerService.createCustomer(customer);
     }
 
     @GetMapping("/{id}")
     public Customer getCustomerById(@PathVariable int id) {
-        return customerService.getCustomerById(id);
+        return (Customer) CustomerService.getCustomerById(id);
     }
 
     @GetMapping("/all")
-    public List<Customer> getAllCustomers() {
-        return customerService.getAllCustomers();
+    public List<com.turkcell.pairproject1.services.abstracts.CustomerService> getAllCustomers() {
+        return CustomerService.getAllCustomers();
     }
 
     @PutMapping("/update")
     public Customer updateCustomer(@RequestBody Customer customer) {
-        return customerService.updateCustomer(customer);
+        return (Customer) CustomerService.updateCustomer(customer);
     }
 
     @DeleteMapping("/delete/{id}")
     public void deleteCustomer(@PathVariable int id) {
-        customerService.deleteCustomer(id);
+        CustomerService.deleteCustomer(id);
     }
 
 

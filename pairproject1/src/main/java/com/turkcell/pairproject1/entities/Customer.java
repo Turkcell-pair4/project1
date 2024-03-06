@@ -1,11 +1,17 @@
-package com.example.odev.entities;
+package com.turkcell.pairproject1.entities;
 
 
 public class Customer{
     private int id;
     private String name;
+
+    @Column(name = "SURNAME", length = 100, nullable = false)
     private String surname;
+
+    @Column(name = "EMAIL", length = 100, nullable = false)
     private String email;
+
+    @Column(name = "PASSWORD", length = 100, nullable = false)
     private String password;
 
     public Customer(int id, String name, String surname,
@@ -104,9 +110,18 @@ public class Customer{
     }
 
     private String address;
+
+    @Column(name = "PHONE_NUMBER", length = 11, nullable = false)
     private String phoneNumber;
-    private String gender;
+
+    @Enumerated(EnumType.STRING)
+    @Column (name = "GENDER", length = 100, nullable = false)
+    private EnumGender gender;
+
+    @Column(name = "BASKET_ID")
     private int basketId;
+
+    @Column(name = "TAX_RATE")
     private int taxRate;
 
 

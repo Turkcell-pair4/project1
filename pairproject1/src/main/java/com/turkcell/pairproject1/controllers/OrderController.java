@@ -9,9 +9,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/orders")
 public class OrderController {
+    private final OrderService orderService;
 
-    @Autowired
-    private OrderServiceImpl orderService;
+    public OrderController(OrderService orderService) {
+        this.orderService = orderService;
+    }
 
     @PostMapping("/create")
     public void createOrder(@RequestBody Order order) {

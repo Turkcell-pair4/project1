@@ -1,13 +1,13 @@
-package com.example.odev.services.abstracts;
+package com.turkcell.pairproject1.services.abstracts;
 
-import com.example.odev.entities.Order;
+import com.turkcell.pairproject1.entities.Customer;
+import com.turkcell.pairproject1.requests.CustomerSaveRequest;
 
 import java.util.List;
 public interface CustomerService {
-    CustomerService createCustomer(CustomerService customer);
-    CustomerService getCustomerById(int id);
-    List<CustomerService> getAllCustomers();
-    CustomerService updateCustomer(CustomerService customer);
-
-    CustomerService deleteCustomer(int id);
+    Customer save(Customer customer);
+    Customer findById(int id);
+    List<Customer> findAll();
+    Customer update(int id, Customer customer);
+    void delete(int id);
 }

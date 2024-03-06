@@ -1,12 +1,12 @@
-package com.turkcell.pairproject1.repositories.abstracts;
+package com.turkcell.pairproject1.repositories;
 
 import com.turkcell.pairproject1.entities.Product;
 import com.turkcell.pairproject1.requests.ProductSaveRequest;
 import com.turkcell.pairproject1.requests.ProductUpdateRequest;
 
-import java.util.List;
 
-public interface ProductRepository {
+@Repository
+public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     Product findById(int id);
     List<Product> findAll();

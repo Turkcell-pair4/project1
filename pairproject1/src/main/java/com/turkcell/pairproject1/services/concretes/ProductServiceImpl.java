@@ -1,13 +1,14 @@
 package com.turkcell.pairproject1.services.concretes;
 
 import com.turkcell.pairproject1.entities.Product;
-import com.turkcell.pairproject1.repositories.abstracts.ProductRepository;
+import com.turkcell.pairproject1.repositories.ProductRepository;
 import com.turkcell.pairproject1.requests.ProductSaveRequest;
 import com.turkcell.pairproject1.requests.ProductUpdateRequest;
 import com.turkcell.pairproject1.services.abstracts.ProductService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -20,38 +21,53 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product findById(int id) {
-        Product product = productRepository.findById(id);
+        Optional<Product> productOptional = productRepository.findById(id);
 
-        if(product == null) {
-            throw new RuntimeException("İlgili Id'ye sahip ürün bulunamadı!");
+        if(productOptional.isEmpty()) {
+            throw new RuntimeException("Product with id " + id + " does not exist");
         }
 
-        return product;
+
+        return productOptional.get();
     }
 
     @Override
     public List<Product> findAll() {
-        return productRepository.findAll();
+        List<Product> products = productRepository.findAll();
+
+        if(products.isEmpty()) {
+            throw new RuntimeException("There are no products");
+        }
+
+        return products;
     }
 
     @Override
-    public Product save(ProductSaveRequest request) {
-        return productRepository.save(request);
+    public Product save(Product product) {
+        return productRepository.save(product);
     }
 
     @Override
-    public Product update(int id, ProductUpdateRequest request) {
-        return productRepository.update(id, request);
+    public Product update(int id, Product product) {
+        Optional<Product> productOptional = productRepository.findById(id);
+
+        if(productOptional.isEmpty()) {
+            throw new RuntimeException("Product with id " + id + " does not exist");
+        }
+
+        Product productToUpdate = productOptional.get();
+        productToUpdate = productRepository.save(product);
+
+        return productToUpdate;
     }
 
     @Override
     public void delete(int id) {
-        Product product = productRepository.findById(id);
-
-        if(product == null) {
-            throw new RuntimeException("İlgili Id'ye sahip ürün bulunamadı!");
+        Optional<Product> productOptional = productRepository.findById(id);
+        if(productOptional.isEmpty()) {
+            throw new RuntimeException("Product with id " + id + " does not exist");
         }
 
-        productRepository.delete(id);
+        productRepository.delete(productOptional.get());
     }
 }

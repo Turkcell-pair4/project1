@@ -1,6 +1,5 @@
-package com.turkcell.pairproject1.repositories.abstracts;
+package com.turkcell.pairproject1.repositories;
 
-import com.turkcell.pairproject1.entities.Category;
 import com.turkcell.pairproject1.entities.Review;
 import com.turkcell.pairproject1.requests.CategorySaveRequest;
 import com.turkcell.pairproject1.requests.CategoryUpdateRequest;

@@ -1,7 +1,8 @@
 package com.turkcell.pairproject1.services.concretes;
 
+import com.turkcell.pairproject1.entities.Product;
 import com.turkcell.pairproject1.entities.Review;
-import com.turkcell.pairproject1.repositories.abstracts.ReviewRepository;
+import com.turkcell.pairproject1.repositories.ReviewRepository;
 import com.turkcell.pairproject1.requests.ReviewSaveRequest;
 import com.turkcell.pairproject1.requests.ReviewUpdateRequest;
 import com.turkcell.pairproject1.services.abstracts.ReviewService;
