@@ -1,7 +1,6 @@
 package com.turkcell.pairproject1.services.abstracts;
 
 import com.turkcell.pairproject1.entities.Customer;
-import com.turkcell.pairproject1.requests.CustomerSaveRequest;
 
 import java.util.List;
 public interface CustomerService {

@@ -1,6 +1,7 @@
 package com.turkcell.pairproject1.controllers;
 import com.turkcell.pairproject1.entities.Order;
-import com.turkcell.pairproject1.services.concretes.OrderServiceImpl;
+import com.turkcell.pairproject1.services.abstracts.OrderService;
+import com.turkcell.pairproject1.services.concretes.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,17 +17,17 @@ public class OrderController {
     }
 
     @PostMapping("/create")
-    public void createOrder(@RequestBody Order order) {
-        orderService.createOrder(order);
+    public Order createOrder(@RequestBody Order order) {
+        return orderService.save(order);
     }
 
     @GetMapping("/{id}")
-    public Order getOrderById(@PathVariable int id) {
-        return orderService.getOrderById(id);
+    public Order findById(@PathVariable int id) {
+        return orderService.findById(id);
     }
 
     @GetMapping("/all")
-    public List<Order> getAllOrders() {
-        return orderService.getAllOrders();
+    public List<Order> findAll() {
+        return orderService.findAll();
     }
 }

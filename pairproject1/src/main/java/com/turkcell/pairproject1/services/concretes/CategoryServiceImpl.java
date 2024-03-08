@@ -6,6 +6,7 @@ import com.turkcell.pairproject1.services.abstracts.CategoryService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
@@ -18,13 +19,13 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public Category findById(int id) {
-        Category category = categoryRepository.findById(id);
+        Optional<Category> category = categoryRepository.findById(id);
 
-        if(category == null) {
+        if(category.isEmpty()) {
             throw new RuntimeException("İlgili Id'ye sahip kategori bulunamadı!");
         }
 
-        return category;
+        return category.get();
     }
 
     @Override
@@ -33,23 +34,32 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public Category save(CategorySaveRequest request) {
-        return categoryRepository.save(request);
+    public Category save(Category category) {
+        return categoryRepository.save(category);
     }
 
     @Override
-    public Category update(int id, CategoryUpdateRequest request) {
-        return categoryRepository.update(id, request);
+    public Category update(int id, Category category) {
+        Optional<Category> isCategoryExist = categoryRepository.findById(id);
+
+        if(isCategoryExist.isEmpty()) {
+            throw new RuntimeException("İlgili Id'ye ait kategori bulunamadı");
+        }
+
+        Category updatedCategory = isCategoryExist.get();
+        updatedCategory = categoryRepository.save(category);
+
+        return updatedCategory;
     }
 
     @Override
     public void delete(int id) {
-        Category category = categoryRepository.findById(id);
+        Optional<Category> category = categoryRepository.findById(id);
 
-        if(category == null) {
+        if(category.isEmpty()) {
             throw new RuntimeException("İlgili Id'ye sahip kategori bulunamadı!");
         }
 
-        categoryRepository.delete(id);
+        categoryRepository.delete(category.get());
     }
 }

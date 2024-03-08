@@ -1,4 +1,4 @@
-package com.turkcell.pairproject1.requests;
+package com.turkcell.pairproject1.dtos.requests;
 
 import com.turkcell.pairproject1.entities.Order;
 

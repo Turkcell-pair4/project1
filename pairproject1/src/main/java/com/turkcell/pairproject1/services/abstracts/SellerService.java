@@ -1,12 +1,16 @@
-package com.example.odev.services.abstracts;
+package com.turkcell.pairproject1.services.abstracts;
 
-import com.example.odev.entities.Seller;
-
+import com.turkcell.pairproject1.entities.Seller;
+import org.springframework.stereotype.Service;
+import com.turkcell.pairproject1.requests.*;
 import java.util.List;
 
+@Service
 public interface SellerService {
-    void createSeller(Seller seller);
-    Seller getSellerById(Long id);
-    List<Seller> getAllSellers();
+    Seller save(Seller seller);
+    Seller findById(int id);
+    List<Seller> findAll();
+    Seller update(int id, Seller seller);
+    void delete(int id);
 
 }

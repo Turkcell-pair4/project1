@@ -1,31 +1,38 @@
 package com.turkcell.pairproject1.entities;
 
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.time.LocalDateTime;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "REVIEWS")
 public class Review {
-    int id;
-    String comment;
-    double rating;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
-    public int getId() {
-        return id;
-    }
+    @Column(name = "COMMENT", length = 100, nullable = false)
+    private String comment;
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    @Column(name = "RATING", nullable = false)
+    private double rating;
 
-    public String getComment() {
-        return comment;
-    }
+    @ManyToOne()
+    @JoinColumn(name = "PRODUCT_ID", nullable = false)
+    private Product product;
 
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
+    @ManyToOne()
+    @JoinColumn(name = "CUSTOMER_ID", nullable = false)
+    private Customer customer;
 
-    public double getRating() {
-        return rating;
-    }
-
-    public void setRating(double rating) {
-        this.rating = rating;
-    }
+    @Column(name = "REVIEW_DATE", nullable = false)
+    private LocalDateTime reviewDate;
 }

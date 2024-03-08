@@ -1,8 +1,8 @@
 package com.turkcell.pairproject1.controllers;
 
 import com.turkcell.pairproject1.entities.Category;
-import com.turkcell.pairproject1.requests.CategorySaveRequest;
-import com.turkcell.pairproject1.requests.CategoryUpdateRequest;
+import com.turkcell.pairproject1.dtos.requests.CategorySaveRequest;
+import com.turkcell.pairproject1.dtos.requests.CategoryUpdateRequest;
 import com.turkcell.pairproject1.services.abstracts.CategoryService;
 import org.springframework.web.bind.annotation.*;
 

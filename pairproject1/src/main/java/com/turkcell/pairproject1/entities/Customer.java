@@ -1,8 +1,26 @@
 package com.turkcell.pairproject1.entities;
 
+import com.turkcell.pairproject1.enums.EnumGender;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import java.util.List;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "CUSTOMERS")
 public class Customer{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(name = "NAME", length = 100, nullable = false)
     private String name;
 
     @Column(name = "SURNAME", length = 100, nullable = false)
@@ -14,101 +32,7 @@ public class Customer{
     @Column(name = "PASSWORD", length = 100, nullable = false)
     private String password;
 
-    public Customer(int id, String name, String surname,
-                    String email, String password, String address, String phoneNumber
-    , String gender , int basketId , int taxRate) {
-        this.id = id;
-        this.name = name;
-        this.surname = surname;
-        this.email = email;
-        this.password = password;
-        this.address = address;
-        this.phoneNumber = phoneNumber;
-        this.gender = gender;
-        this.basketId = basketId;
-        this.taxRate = taxRate;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public int getBasketId() {
-        return basketId;
-    }
-
-    public void setBasketId(int basketId) {
-        this.basketId = basketId;
-    }
-
-    public int getTaxRate() {
-        return taxRate;
-    }
-
-    public void setTaxRate(int taxRate) {
-        this.taxRate = taxRate;
-    }
-
+    @Column(name = "ADDRESS", length = 500, nullable = false)
     private String address;
 
     @Column(name = "PHONE_NUMBER", length = 11, nullable = false)
@@ -124,5 +48,12 @@ public class Customer{
     @Column(name = "TAX_RATE")
     private int taxRate;
 
+    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    private List<Order> orders;
 
+    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    private List<Review> reviews;
+
+    @OneToOne(mappedBy = "customer", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    private Basket basket;
 }

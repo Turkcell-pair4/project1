@@ -39,60 +39,13 @@ public class Product {
     @JoinColumn(name = "CATEGORY_ID")
     private Category category;
 
-    
-    public int getId() {
-        return id;
-    }
+    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    private List<Order> orders;
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    private List<Review> reviews;
 
-    public String getName() {
-        return Name;
-    }
-
-    public void setName(String name) {
-        Name = name;
-    }
-
-    public double getUnitPrice() {
-        return unitPrice;
-    }
-
-    public void setUnitPrice(double unitPrice) {
-        this.unitPrice = unitPrice;
-    }
-
-    public int getStock() {
-        return stock;
-    }
-
-    public void setStock(int stock) {
-        this.stock = stock;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getPhotoUrl() {
-        return photoUrl;
-    }
-
-    public void setPhotoUrl(String photoUrl) {
-        this.photoUrl = photoUrl;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
+    @ManyToOne(fetch = FetchType.LAZY , cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "SELLER_ID")
+    private Seller seller;
 }

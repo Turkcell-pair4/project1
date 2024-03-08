@@ -1,8 +1,8 @@
 package com.turkcell.pairproject1.controllers;
 
 import com.turkcell.pairproject1.entities.Review;
-import com.turkcell.pairproject1.requests.ReviewSaveRequest;
-import com.turkcell.pairproject1.requests.ReviewUpdateRequest;
+import com.turkcell.pairproject1.dtos.requests.ReviewSaveRequest;
+import com.turkcell.pairproject1.dtos.requests.ReviewUpdateRequest;
 import com.turkcell.pairproject1.services.abstracts.ReviewService;
 import org.springframework.web.bind.annotation.*;
 

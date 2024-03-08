@@ -1,8 +1,8 @@
 package com.turkcell.pairproject1.controllers;
 
 import com.turkcell.pairproject1.entities.Product;
-import com.turkcell.pairproject1.requests.ProductSaveRequest;
-import com.turkcell.pairproject1.requests.ProductUpdateRequest;
+import com.turkcell.pairproject1.dtos.requests.ProductSaveRequest;
+import com.turkcell.pairproject1.dtos.requests.ProductUpdateRequest;
 import com.turkcell.pairproject1.services.abstracts.ProductService;
 import org.springframework.web.bind.annotation.*;
 
