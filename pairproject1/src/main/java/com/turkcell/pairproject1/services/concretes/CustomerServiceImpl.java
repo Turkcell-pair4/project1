@@ -1,4 +1,6 @@
 package com.turkcell.pairproject1.services.concretes;
+import com.turkcell.pairproject1.dtos.requests.CustomerRequests.CustomerSaveRequest;
+import com.turkcell.pairproject1.dtos.requests.CustomerRequests.CustomerUpdateRequest;
 import org.springframework.stereotype.Service;
 import com.turkcell.pairproject1.entities.Customer;
 import com.turkcell.pairproject1.repositories.CustomerRepository;
@@ -42,17 +44,20 @@ public class CustomerServiceImpl implements CustomerService{
         return customers;
     }
 
-    public Customer update(int id, Customer customer) {
-        Optional<Customer> customerOptional = customerRepository.findById(id);
+    public Customer update(int id, CustomerUpdateRequest request) {
+        Customer customer = findById(id);
 
-        if(customerOptional.isEmpty()) {
-            throw new RuntimeException("Customer with id " + id + " does not exist");
-        }
+        customer.setId(request.id());
+        customer.setName(request.name());
+        customer.setSurname(request.surname());
+        customer.setAddress(request.address());
+        customer.setEmail(request.email());
+        customer.setGender(request.gender());
+        customer.setPhoneNumber(request.phoneNumber());
+        customer.setPassword(request.password());
+        customer.setBasket(request.basket());
 
-        Customer customerToUpdate = customerOptional.get();
-        customerToUpdate = customerRepository.save(customer);
-
-        return customerToUpdate;
+        return customer;
 
     }
 

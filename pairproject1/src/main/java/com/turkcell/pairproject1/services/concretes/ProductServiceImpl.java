@@ -1,5 +1,7 @@
 package com.turkcell.pairproject1.services.concretes;
 
+import com.turkcell.pairproject1.dtos.requests.ProductRequests.ProductSaveRequest;
+import com.turkcell.pairproject1.dtos.requests.ProductRequests.ProductUpdateRequest;
 import com.turkcell.pairproject1.entities.Product;
 import com.turkcell.pairproject1.repositories.ProductRepository;
 import com.turkcell.pairproject1.services.abstracts.ProductService;

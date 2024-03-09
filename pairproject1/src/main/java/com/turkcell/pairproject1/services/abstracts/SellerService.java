@@ -1,5 +1,7 @@
 package com.turkcell.pairproject1.services.abstracts;
 
+import com.turkcell.pairproject1.dtos.requests.SellerRequests.SellerSaveRequest;
+import com.turkcell.pairproject1.dtos.requests.SellerRequests.SellerUpdateRequest;
 import com.turkcell.pairproject1.entities.Seller;
 import org.springframework.stereotype.Service;
 import com.turkcell.pairproject1.requests.*;

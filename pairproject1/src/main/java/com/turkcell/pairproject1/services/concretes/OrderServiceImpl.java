@@ -3,7 +3,6 @@ package com.turkcell.pairproject1.services.concretes;
 import com.turkcell.pairproject1.entities.Order;
 import com.turkcell.pairproject1.repositories.OrderRepository;
 import com.turkcell.pairproject1.services.abstracts.OrderService;
-import org.aspectj.weaver.ast.Or;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -47,16 +46,22 @@ public class OrderServiceImpl implements OrderService{
     }
 
     @Override
-    public Order update(int id, Order order) {
-        Optional<Order> orderOptional = orderRepository.findById(id);
+    public Order update(int id, OrderUpdateRequest request) {
+        Optional<Order> order = orderRepository.findById(id);
 
-        if(orderOptional.isEmpty()) {
-            throw new RuntimeException("İlgili Id'ye ait sipariş bulunamadı.");
+        if(order.isEmpty()) {
+            throw new RuntimeException("An order with the given id was not found.");
         }
 
-        Order updatedOrder = orderOptional.get();
+        Order updatedOrder = order.get();
 
-        updatedOrder = orderRepository.save(order);
+        updatedOrder.setCustomer(request.customer());
+        updatedOrder.setProduct(request.product());
+        updatedOrder.setQuantity(request.quantity());
+        updatedOrder.setPrice(request.price());
+        updatedOrder.setAddress(request.address());
+        updatedOrder.setPaymentMethod(request.paymentMethod());
+        updatedOrder.setSeller(request.seller());
 
         return updatedOrder;
     }

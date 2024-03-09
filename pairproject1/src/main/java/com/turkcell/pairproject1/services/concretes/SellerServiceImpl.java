@@ -1,4 +1,6 @@
 package com.turkcell.pairproject1.services.concretes;
+import com.turkcell.pairproject1.dtos.requests.SellerRequests.SellerSaveRequest;
+import com.turkcell.pairproject1.dtos.requests.SellerRequests.SellerUpdateRequest;
 import com.turkcell.pairproject1.services.abstracts.SellerService;
 import com.turkcell.pairproject1.repositories.SellerRepository;
 import org.springframework.stereotype.Service;

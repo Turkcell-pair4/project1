@@ -1,5 +1,7 @@
 package com.turkcell.pairproject1.services.abstracts;
 
+import com.turkcell.pairproject1.dtos.requests.CategoryRequests.CategorySaveRequest;
+import com.turkcell.pairproject1.dtos.requests.CategoryRequests.CategoryUpdateRequest;
 import com.turkcell.pairproject1.entities.Category;
 
 import java.util.List;

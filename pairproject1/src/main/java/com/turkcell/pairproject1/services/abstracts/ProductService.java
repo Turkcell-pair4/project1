@@ -1,5 +1,7 @@
 package com.turkcell.pairproject1.services.abstracts;
 
+import com.turkcell.pairproject1.dtos.requests.ProductRequests.ProductSaveRequest;
+import com.turkcell.pairproject1.dtos.requests.ProductRequests.ProductUpdateRequest;
 import com.turkcell.pairproject1.entities.Product;
 
 import java.util.List;
