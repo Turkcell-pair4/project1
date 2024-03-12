@@ -34,8 +34,12 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public Category save(Category category) {
-        return categoryRepository.save(category);
+    public Category save(CategorySaveRequest request) {
+        Category category = CategoryMapper.INSTANCE.convertToCategory(request);
+
+        category =categoryRepository.save(category);
+
+        return category;
     }
 
     @Override
@@ -47,7 +51,10 @@ public class CategoryServiceImpl implements CategoryService {
         }
 
         Category updatedCategory = isCategoryExist.get();
-        updatedCategory = categoryRepository.save(category);
+
+        CategoryMapper.INSTANCE.updateCategoryFields(updatedCategory, request);
+
+        updatedCategory = categoryRepository.save(updatedCategory);
 
         return updatedCategory;
     }

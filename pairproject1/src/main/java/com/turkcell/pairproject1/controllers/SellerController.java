@@ -1,5 +1,7 @@
 package com.turkcell.pairproject1.controllers;
 
+import com.turkcell.pairproject1.dtos.requests.SellerRequests.SellerSaveRequest;
+import com.turkcell.pairproject1.dtos.requests.SellerRequests.SellerUpdateRequest;
 import com.turkcell.pairproject1.services.abstracts.SellerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,9 +17,9 @@ public class SellerController {
         this.sellerService = sellerService;
     }
 
-    @PostMapping("/create")
-    public Seller createSeller(@RequestBody Seller seller) {
-        return sellerService.save(seller);
+    @PostMapping
+    public Seller createSeller(@RequestBody SellerSaveRequest request) {
+        return sellerService.save(request);
     }
 
     @GetMapping("/{id}")

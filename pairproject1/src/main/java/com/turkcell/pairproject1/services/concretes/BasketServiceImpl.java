@@ -37,10 +37,9 @@ public class BasketServiceImpl implements BasketService {
 
     @Override
     public Basket save(BasketSaveRequest request) {
-        Basket basket = new Basket();
-        basket.setCustomer(request.customer());
-        basket.setTotalPrice(request.totalPrice());
-        basket.setQuantity(request.quantity());
+        Basket basket = BasketMapper.INSTANCE.convertToBasket(request);
+
+        basket = basketRepository.save(basket);
 
         return basket;
     }
@@ -54,10 +53,8 @@ public class BasketServiceImpl implements BasketService {
         }
 
         Basket updatedBasket = basket.get();
-        updatedBasket.setId(request.id());
-        updatedBasket.setCustomer(request.customer());
-        updatedBasket.setTotalPrice(request.totalPrice());
-        updatedBasket.setQuantity(request.quantity());
+
+        BasketMapper.INSTANCE.updateBasketFields(updatedBasket, request);
 
         updatedBasket = basketRepository.save(updatedBasket);
 

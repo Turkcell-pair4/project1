@@ -55,12 +55,7 @@ public class BasketItemServiceImpl implements BasketItemService {
             throw new BusinessException("İlgili Id'ye ait sepet ürünü bulunamadı");
         }
 
-        BasketItem updatedBasketItem = basketItem.get();
-
-        updatedBasketItem.setId(request.id());
-        updatedBasketItem.setBasket(request.basket());
-        updatedBasketItem.setProduct(request.product());
-        updatedBasketItem.setAmount(request.amount());
+        BasketItemMapper.INSTANCE.updateBasketItemFields(updatedBasketItem, request);
 
         updatedBasketItem = basketItemRepository.save(updatedBasketItem);
 

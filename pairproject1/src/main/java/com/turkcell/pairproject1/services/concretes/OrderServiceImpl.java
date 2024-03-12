@@ -1,6 +1,7 @@
 package com.turkcell.pairproject1.services.concretes;
 
 import com.turkcell.pairproject1.entities.Order;
+import com.turkcell.pairproject1.mappers.OrderMapper;
 import com.turkcell.pairproject1.repositories.OrderRepository;
 import com.turkcell.pairproject1.services.abstracts.OrderService;
 import org.springframework.stereotype.Service;
@@ -54,14 +55,10 @@ public class OrderServiceImpl implements OrderService{
         }
 
         Order updatedOrder = order.get();
+        OrderMapper.INSTANCE.updateOrderFields(updatedOrder, request);
 
-        updatedOrder.setCustomer(request.customer());
-        updatedOrder.setProduct(request.product());
-        updatedOrder.setQuantity(request.quantity());
-        updatedOrder.setPrice(request.price());
-        updatedOrder.setAddress(request.address());
-        updatedOrder.setPaymentMethod(request.paymentMethod());
-        updatedOrder.setSeller(request.seller());
+
+        updatedOrder = orderRepository.save(updatedOrder);
 
         return updatedOrder;
     }

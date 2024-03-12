@@ -1,4 +1,6 @@
 package com.turkcell.pairproject1.controllers;
+import com.turkcell.pairproject1.dtos.requests.OrderRequests.OrderSaveRequest;
+import com.turkcell.pairproject1.dtos.requests.OrderRequests.OrderUpdateRequest;
 import com.turkcell.pairproject1.entities.Order;
 import com.turkcell.pairproject1.services.abstracts.OrderService;
 import com.turkcell.pairproject1.services.concretes.*;
@@ -16,9 +18,9 @@ public class OrderController {
         this.orderService = orderService;
     }
 
-    @PostMapping("/create")
-    public Order createOrder(@RequestBody Order order) {
-        return orderService.save(order);
+    @PostMapping
+    public Order createOrder(@RequestBody OrderSaveRequest request) {
+        return orderService.save(request);
     }
 
     @GetMapping("/{id}")
@@ -26,7 +28,7 @@ public class OrderController {
         return orderService.findById(id);
     }
 
-    @GetMapping("/all")
+    @GetMapping
     public List<Order> findAll() {
         return orderService.findAll();
     }

@@ -24,19 +24,19 @@ public class CustomerController {
         return (Customer) CustomerService.getCustomerById(id);
     }
 
-    @GetMapping("/all")
-    public List<com.turkcell.pairproject1.services.abstracts.CustomerService> getAllCustomers() {
-        return CustomerService.getAllCustomers();
+    @GetMapping
+    public List<Customer> getAllCustomers() {
+        return customerService.findAll();
     }
 
-    @PutMapping("/update")
-    public Customer updateCustomer(@RequestBody Customer customer) {
-        return (Customer) CustomerService.updateCustomer(customer);
+    @PutMapping("/{id}")
+    public Customer updateCustomer(@PathVariable int id, @RequestBody CustomerUpdateRequest request) {
+        return  customerService.update(id, request);
     }
 
     @DeleteMapping("/delete/{id}")
     public void deleteCustomer(@PathVariable int id) {
-        CustomerService.deleteCustomer(id);
+        customerService.delete(id);
     }
 
 

@@ -21,8 +21,12 @@ public class CustomerServiceImpl implements CustomerService{
 
 
 
-    public Customer save(Customer customer) {
-        return customerRepository.save(customer);
+    public Customer save(CustomerSaveRequest request) {
+        Customer customer = CustomerMapper.INSTANCE.convertToCustomer(request);
+
+        customer = customerRepository.save(customer);
+
+        return customer;
     }
 
     public Customer findById(int id) {
